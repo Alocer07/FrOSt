@@ -153,13 +153,24 @@ set c , 32
 set i , 0
 :boucle_scroll
 ife i , 9
-	set pc , fin_scroll
+	set pc , suite_scroll
 JSR memcpy
 add i , 1
 add a , 32
 add b , 32
 set c , 32
 set pc , boucle_scroll
+:suite_scroll
+set b , [VRAM1]
+add b , 288
+set i , 0
+:boucle_efface_derniere_ligne
+ife i , 32
+	set pc , fin_scroll
+set [b] , 0
+add b , 1
+add i , 1
+set pc , boucle_efface_derniere_ligne
 :fin_scroll
 set i , pop
 set c , pop
@@ -175,14 +186,30 @@ set pc , pop
 set push , A
 set push , B
 set push , c
-JSR scroll
+
 ife z , 1
 	set pc , cmd_uk	
 ife z , 2
 	set pc , cmd_test
+ife z , 3
+	set pc , cmd_help
+ife z , 4
+	set pc , cmd_version
 :suite_affiche_message
 set B , [VRAM1]
 add B , 288
+JSR scroll
+set  pc , fin_affiche_message
+
+:suite_affiche_message2
+set B , [VRAM1]
+add B , 256
+JSR scroll
+JSR scroll
+set  pc , fin_affiche_message
+
+
+:fin_affiche_message
 JSR memcpy
 set c , pop
 set b , pop
@@ -198,4 +225,13 @@ set pc , pop
 	set A , message_test
 	set c , 24
 	set pc , suite_affiche_message
+	
+:cmd_help
+	set A , message_help
+	set c , 51
+	set pc , suite_affiche_message2
 
+:cmd_version
+	set A , message_version
+	set c , 5
+	set pc , suite_affiche_message

@@ -141,13 +141,48 @@ set A , [parse_commande1]
 set B , commande_test
 set C , 4
 JSR strcmp
-JSR launch_programme
+ife z , 1
+	set pc , launch_test
+set B , commande_help
+set C , 4
+JSR strcmp
+ife z , 1
+	set pc , launch_help
+set b , commande_version
+set C , 7
+JSR strcmp
+ife z , 1
+	set pc , launch_version	
+
+set pc , launch_unknown
+
+:fin_interprete_parse
 JSR vider_parse
 set Z , pop
 set C , pop
 set b , pop
 set a , pop
 set pc , pop
+
+:launch_help
+set z , 3
+JSR launch_programme
+set pc , fin_interprete_parse
+
+:launch_test
+set z , 2
+JSR launch_programme
+set pc , fin_interprete_parse
+
+:launch_unknown
+set z , 1
+JSR launch_programme
+set pc , fin_interprete_parse
+
+:launch_version
+set z , 4
+JSR launch_programme
+set pc , fin_interprete_parse
 
 :vider_parse
 set push , A

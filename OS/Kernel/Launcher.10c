@@ -6,9 +6,13 @@
 ; --------------------------------------------
 
 :launch_programme
-ife z , 1
+ife z , 4
+	JSR prog_version
+ife z , 3
+	JSR prog_help
+ife z , 2
 	JSR prog_test
-ife z , 0
+ife z , 1
 	JSR prog_unknown
 
 
@@ -27,6 +31,23 @@ set pc , fin_launcher
 :prog_unknown
 set push , z
 set z , 0x1
+JSR affiche_commande
+JSR affiche_message
+set z , pop
+set pc , fin_launcher
+
+
+:prog_help
+set push , z
+set z , 0x3
+JSR affiche_commande
+JSR affiche_message
+set z , pop
+set pc , fin_launcher
+
+:prog_version
+set push , z
+set z , 0x4
 JSR affiche_commande
 JSR affiche_message
 set z , pop

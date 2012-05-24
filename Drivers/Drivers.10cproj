@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <name>Drivers</name>
+  <files>
+    <file path="Ecran.10c" />
+    <file path="Clavier.10c" />
+    <file path="Clock.10c" />
+    <file path="Disquette.10c" />
+  </files>
+</project>

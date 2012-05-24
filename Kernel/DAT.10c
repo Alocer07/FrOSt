@@ -1,0 +1,42 @@
+; --------------------------------------------
+; Title:   DAT
+; Author:  Administrateur
+; Date:    15/05/2012
+; Version: 
+; --------------------------------------------
+
+:start_mem dat 0x1000
+:end_mem dat 0xFDFF
+:nb_periph dat 0x0
+:tmpV dat 0x0
+:nb_ecran dat 0x0
+:id_ecran1 dat 0x0
+:id_ecran2 dat 0x0
+:nb_keyboard dat 0x0
+:id_keyboard1 dat 0x0
+:nb_clock dat 0x0
+:id_clock1 dat 0x0
+:div_clock dat 60
+:nb_disquette dat 0
+:id_disquette1 dat 0x0
+:VRAM1 dat 0x0
+:VRAM2 dat 0x0
+:COULEUR dat 0xF000
+:FOCUS_CLAVIER dat 0x0
+:commande_help dat "help",0
+:commande_version dat "version",0
+:commande_echo dat "echo",0
+:commande_couleur dat "couleur",0
+:commande_clear dat "clear",0
+:commande_load dat "load",0
+:message_oui dat "Oui",0
+:message_non dat "Non",0
+:message_help dat "Liste des commandes :",0x11,0x11,0x1F,"help",0x11,0x11,0x1f,"version",0x11,0x1F,"echo",0x11,0x1F,"couleur",0x11,0x1F,"clear",0x11,0x1F,"load",0
+:message_version dat "Version 1.0",0
+:message_inconnu dat "Commande inconnue",0
+:message_bienvenue dat "Welcome on board",0x11,"FrOSt fully laoded",0x11,"type help if you are completely lost",0
+:message_test_disquette dat "Disquette presente?",0
+:message_disquette_verouillee dat "Disquette lecture seule",0
+:message_disquette_libre dat "Disquette non verrouillee",0
+:message_disquette_erreur_malloc dat "Chargement impossible : malloc impossible",0
+:message_disquette_erreur_copy dat "Chargement impossible : erreur de copie",0

@@ -6,5 +6,5 @@
 ; Description: Ici vous pouvez coller votre code à tester
 ; --------------------------------------------
 :test
-JSR frostGUI_start
+;JSR frostGUI_start
 set pc , end

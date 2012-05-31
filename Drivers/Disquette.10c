@@ -1,0 +1,39 @@
+; --------------------------------------------
+; Title:   Disquette
+; Author:  Administrateur
+; Date:    15/05/2012
+; Version: 
+; --------------------------------------------
+
+:init_disquette1
+set push , A
+set push , B
+set A , 0x5
+set B , 0xcdcd
+hwi [id_disquette1] ; init interruption
+set b , pop
+set a , pop
+set pc , pop
+
+
+
+:disquette_presente
+set push , A
+set push , B
+set A , 0
+hwi [id_disquette1]
+set Z,B
+set b , pop
+set a , pop
+set pc , pop
+
+:recupere_info_disquette
+set push , A
+set A , 0x1
+hwi [id_disquette1]
+set a , pop
+set pc , pop
+
+:copy_disquette
+hwi [id_disquette1]
+set pc , pop

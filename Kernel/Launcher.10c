@@ -1,0 +1,297 @@
+; --------------------------------------------
+; Title:   Launcher
+; Author:  Administrateur
+; Date:    15/05/2012
+; Version: 
+; --------------------------------------------
+
+
+
+:init_launcher
+set pc ,pop
+
+
+:launch
+set push , A
+set push , B
+
+set A , [parse_commande1]
+set B , commande_help
+JSR strcmp
+ife Z , 1
+	set pc , launch_help
+set a , [parse_commande1]
+set B , commande_version
+JSR strcmp
+ife Z , 1
+	set pc , launch_version
+set a , [parse_commande1]
+set B , commande_echo
+JSR strcmp
+ife Z , 1
+	set pc , launch_echo
+set a, [parse_commande1]
+set B , commande_couleur
+JSR strcmp
+ife Z , 1
+	set pc , launch_couleur
+set a, [parse_commande1]
+set B , commande_clear
+JSR strcmp
+ife Z , 1
+	set pc , launch_clear
+set a, [parse_commande1]
+set B , commande_load
+JSR strcmp
+ife Z , 1
+	set pc , launch_load
+set a, [parse_commande1]
+set B , commande_ls
+JSR strcmp
+ife Z , 1
+	set pc , launch_ls
+set a, [parse_commande1]
+set B , commande_cd
+JSR strcmp
+ife Z , 1
+	set pc , launch_cd
+set a, [parse_commande1]
+set B , commande_kill
+JSR strcmp
+ife Z , 1
+	set pc , launch_kill
+set a, [parse_commande1]
+set B , commande_mem
+JSR strcmp
+ife Z , 1
+	set pc , launch_mem
+set a, [parse_commande1]
+set B , commande_run
+JSR strcmp
+ife Z , 1
+	set pc , launch_run
+set pc , launch_inconnu
+
+
+
+:launch_help
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_help
+JSR printf
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+
+:launch_version
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+
+set A , message_version
+JSR printf
+
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_inconnu
+set push , I
+set push , j
+set push , x
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set x , [couleur]
+set B , 0x4000
+JSR change_couleur
+set A , message_inconnu
+JSR printf
+set B , x
+JSR change_couleur
+JSR scroll_ecran
+set x , pop
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_echo
+set push , I
+set push , j
+set push , Z
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set A , 50
+JSR malloc
+ife Z , 0
+	set pc , fin_launch_echo
+set A , Z
+add A , 3
+set B , [parse_commande2]
+set C , [parse_commande3]
+JSR coller_string
+set B , A
+set C , [parse_commande4]
+JSR coller_string
+set B , A
+set C , [parse_commande5]
+JSR coller_string
+JSR printf
+set i , 11
+JSR scroll_from
+set a , Z
+JSR efface_memoire
+JSR free
+:fin_launch_echo
+JSR scroll_ecran
+set z , pop
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_couleur
+set push , Z
+set push , I
+set push , C
+set push , X
+set C, [parse_commande2]
+set Z , 0
+set I , 3
+:boucle_launch_couleur
+set X , [C]
+ife I , 0
+	set pc , launch_couleur_change
+JSR carac_to_hexa
+ife Z , 0xFFFF
+	set pc , end_launch_couleur
+mul z , 0x10
+sub i , 1
+add C , 1
+set pc , boucle_launch_couleur
+:launch_couleur_change
+ife Z , 0x0000
+	set pc , end_launch_couleur
+set B , Z
+JSR change_couleur
+:end_launch_couleur
+set x , pop
+set c , pop
+set i , pop
+set z , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_clear
+JSR clear
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_load
+JSR load
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_ls
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_cd
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_kill
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_run
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_mem
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop

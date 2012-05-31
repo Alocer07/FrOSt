@@ -70,6 +70,31 @@ set B , commande_run
 JSR strcmp
 ife Z , 1
 	set pc , launch_run
+set a, [parse_commande1]
+set B , commande_mkdir
+JSR strcmp
+ife Z , 1
+	set pc , launch_mkdir
+set a, [parse_commande1]
+set B , commande_mv
+JSR strcmp
+ife Z , 1
+	set pc , launch_mv
+set a, [parse_commande1]
+set B , commande_cp
+JSR strcmp
+ife Z , 1
+	set pc , launch_cp
+set a, [parse_commande1]
+set B , commande_touch
+JSR strcmp
+ife Z , 1
+	set pc , launch_touch
+set a, [parse_commande1]
+set B , commande_cat
+JSR strcmp
+ife Z , 1
+	set pc , launch_cat
 set pc , launch_inconnu
 
 
@@ -281,6 +306,86 @@ set a , pop
 set pc , pop
 
 :launch_mem
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_mkdir
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_mv
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_cp
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_touch
+set push , I
+set push , j
+JSR scroll_ecran
+set I , 11
+JSR scroll_from
+set j , 0
+set A , message_TODO
+JSR printf
+JSR scroll_ecran
+set j , pop
+set i , pop
+set b , pop
+set a , pop
+set pc , pop
+
+:launch_cat
 set push , I
 set push , j
 JSR scroll_ecran

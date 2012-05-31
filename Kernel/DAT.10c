@@ -35,9 +35,14 @@
 :commande_kill dat "kill",0
 :commande_mem dat "mem",0
 :commande_run dat "run",0
+:commande_mkdir dat "mkdir",0
+:commande_mv dat "mv",0
+:commande_cp dat "cp",0
+:commande_touch dat "touch",0
+:commande_cat dat "cat",0
 :message_oui dat "Oui",0
 :message_non dat "Non",0
-:message_help dat "Liste des commandes :",0x11,0x1F,"- help ",0x1f,"- version",0x11,0x1F,"- echo ",0x1F,"- couleur",0x11,0x1F,"- clear",0x1F,"- load",0x11,0x1F,"- ls   ",0x1F,"- cd",0x11,0x1F,"- kill ",0x1F,"- mem",0x11,0x1F,"- run",0x11,"Appuyez sur Echap pour switcher de la console a l'eran appli",0
+:message_help dat "Liste des commandes :",0x11,0x1F,"- help ",0x1f,"- version",0x11,0x1F,"- echo ",0x1F,"- couleur",0x11,0x1F,"- clear",0x1F,"- load",0x11,0x1F,"- ls   ",0x1F,"- cd",0x11,0x1F,"- kill ",0x1F,"- mem",0x11,0x1F,"- run  ",0x1F,"- mkdir",0x11,0x1f,"- mv   ",0x1F,"- cp",0x11,0x1F,"- touch",0x1F,"- cat",0
 :message_version dat "Version 1.0",0
 :message_inconnu dat "Commande inconnue",0
 :message_bienvenue dat "Welcome on board",0x11,"FrOSt fully laoded",0x11,"type help if you are completely lost",0
